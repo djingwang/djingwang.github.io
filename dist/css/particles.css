@@ -14,9 +14,39 @@
 	left: 0;
 }
 
+/* 通用标题样式 */
+h2, h3 {
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* 通用段落和列表样式 */
+p, li {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+/* 通用列表样式 */
+ul, ol {
+    padding-left: 20px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* 通用粗体文本样式 */
+b, strong {
+    color: rgb(8, 49,148);
+    font-weight: bold;
+    font-size: 18px;
+}
+
 /* 将网页西文字体设置为Times New Roman */
 body, p, li, a, h1, h2, h3, h4, h5, h6, span, div {
     font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
 }
 
 /* 为论文部分的作者名添加蓝色样式 */
@@ -40,7 +70,49 @@ body, p, li, a, h1, h2, h3, h4, h5, h6, span, div {
 }
 
 .zoom-image:hover {
-    transform: scale(1.2); /* 放大到1.2倍 */
+    transform: scale(1.2);
     cursor: pointer;
-    z-index: 100; /* 确保放大后显示在其他元素上方 */
+    z-index: 100;
+}
+
+/* 特定部分样式 */
+#academic-services,
+#research-grants,
+#award,
+#student-awards {
+    margin-top: 10px;
+}
+
+#academic-services h3,
+#research-grants h2,
+#award h2,
+#student-awards h2,
+#publication h2,
+#Recent-Research h2 {
+    font-size: 24px;
+}
+
+#academic-services p,
+#research-grants p,
+#award p,
+#student-awards p {
+    margin: 5px 0;
+    font-size: auto;
+}
+
+#academic-services li,
+#research-grants li,
+#award li,
+#student-awards li {
+    font-size: auto;
+}
+
+/* Research Grants特定样式 */
+#research-grants ol {
+    padding-left: 20px;
+}
+
+#research-grants li {
+    font-size: auto;
+    margin-bottom: 10px;
 }
