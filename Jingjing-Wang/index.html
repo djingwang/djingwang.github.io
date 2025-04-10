@@ -26,6 +26,21 @@
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
     <link href="../dist/css/particles.css" rel="stylesheet">
+    <style>
+        .model-img {
+            position: relative;
+            min-height: 300px;
+            background-color: #f5f5f5;
+        }
+        .model-img::before {
+            content: "Loading...";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+        }
+    </style>
 </head>
 
 <body>
@@ -141,7 +156,7 @@
                     <div class="page-header">
                         <h4>Foundation Model for Video Understanding</h4>
                     </div>
-                    <img width="600" src="../img/hawkeye.svg" align="left" style="margin-left:0px;margin-right:20px">
+                    <img width="600" src="../img/hawkeye.svg" align="left" style="margin-left:0px;margin-right:20px" class="model-img">
                     <p>
                         The goal is to establish a unified framework for video anomaly detection, advancing precision in
                         identifying and localizing abnormal events across dynamic scenes while enabling interpretable
@@ -201,8 +216,7 @@
                     <div class="page-header">
                         <h4>Foundation Model for Multimodal Generation</h4>
                     </div>
-                    <img width="600" src="../img/L3EM.svg" align="left"
-                        style="margin-left:0px;margin-right:20px;margin-bottom:10px">
+                    <img width="600" src="../img/L3EM.svg" align="left" style="margin-left:0px;margin-right:20px;margin-bottom:10px" class="model-img">
                     <p>
                         The goal​​ is to establish an emotion-driven framework for multimodal large language model (LLM)
                         video generation
@@ -256,8 +270,8 @@
                         准生成意图与情感标签的一致性，提升动作生成的语义合理性；2）设计隐空间扩散模型（Luo et al., COLING-2024），在潜在
                         空间联合建模文本、音频与动作模态的情感主题分布，突破传统像素级生成的效率瓶颈。
                         ​​为推动规模化应用​​，我们构建了首个情感动作生成基准数据集，包含10万+条带情感标注的人体动作序列与多模态指令对。基于此，
-                        我们提出AutoEmoDirector框架，支持用户通过自然语言指令实时编辑视频中的情感强度与动作风格（如“将欢快舞蹈转为悲伤漫步
-                        ”），显著降低视频创作门槛。
+                        我们提出AutoEmoDirector框架，支持用户通过自然语言指令实时编辑视频中的情感强度与动作风格（如"将欢快舞蹈转为悲伤漫步
+                        "），显著降低视频创作门槛。
                     </p> -->
 
                     <p>
