@@ -46,7 +46,7 @@ b, strong {
 /* 将网页西文字体设置为Times New Roman */
 body, p, li, a, h1, h2, h3, h4, h5, h6, span, div {
     font-family: "Times New Roman", Times, serif;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 /* 为论文部分的作者名添加蓝色样式 */
@@ -97,7 +97,7 @@ body, p, li, a, h1, h2, h3, h4, h5, h6, span, div {
 #award p,
 #student-awards p {
     margin: 5px 0;
-    font-size: auto;
+    font-size: 17px;
 }
 
 #academic-services li,
