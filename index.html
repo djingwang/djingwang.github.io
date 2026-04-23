@@ -5,1134 +5,1336 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Jingjing Wang - Associate Professor, Natural Language Processing Lab, Soochow University">
     <link rel="shortcut icon" href="../assets/ico/favicon.ico">
 
-    <title>Jingjing Wang</title>
+    <title>Jingjing Wang 王晶晶</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
-    <link href="./dist/css/particles.css" rel="stylesheet">
     <style>
-        .model-img {
-            position: relative;
-            min-height: 300px;
-            background-color: #f5f5f5;
+        :root {
+            --color-bg: #fafaf8;
+            --color-bg-alt: #f5f4f0;
+            --color-surface: #ffffff;
+            --color-primary: #1a2332;
+            --color-primary-light: #2d3a4f;
+            --color-accent: #b8860b;
+            --color-accent-light: #d4a843;
+            --color-text: #2c2c2c;
+            --color-text-secondary: #5a5a5a;
+            --color-text-muted: #888888;
+            --color-border: #e5e5e0;
+            --color-border-light: #f0f0eb;
+            --font-display: 'Crimson Pro', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+            --max-width: 1100px;
+            --radius: 4px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
         }
 
-        .model-img::before {
-            content: "Loading...";
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-text);
+            background: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border-light);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .nav-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-brand span {
+            color: var(--color-text-muted);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #666;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--color-primary);
+        }
+
+        /* Main Content */
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: calc(64px + var(--spacing-xl));
+            padding-bottom: var(--spacing-xl);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: var(--spacing-lg);
+            align-items: start;
+        }
+
+        .hero-image {
+            width: 180px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            border: 3px solid var(--color-surface);
+            background: var(--color-bg-alt);
+        }
+
+        .hero-content {
+            padding-top: 0.5rem;
+        }
+
+        .hero-name {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            line-height: 1.2;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-name-zh {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-title {
+            font-size: 1.1rem;
+            color: var(--color-accent);
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+        }
+
+        .hero-info-item svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+        }
+
+        /* Section Styling */
+        section {
+            padding: var(--spacing-lg) 0;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .section-number {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about-text {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+
+        .about-text p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-text);
+        }
+
+        .about-text .highlight {
+            background: linear-gradient(120deg, rgba(184, 134, 11, 0.1) 0%, rgba(184, 134, 11, 0.05) 100%);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-left: 3px solid var(--color-accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        /* News Section */
+        .news-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .news-item {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: var(--spacing-md);
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-border-light);
+            align-items: start;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+            padding-top: 0.15rem;
+        }
+
+        .news-content {
+            font-size: 0.95rem;
+            color: var(--color-text);
+        }
+
+        .news-content .emoji {
+            margin-right: 0.25rem;
+        }
+
+        .news-content .badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            margin-left: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        /* Research Cards */
+        .research-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .research-card {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: var(--color-surface);
+            border-radius: 8px;
+            border: 1px solid var(--color-border-light);
+            transition: all 0.3s ease;
+        }
+
+        .research-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-border);
+        }
+
+        .research-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            background: var(--color-bg-alt);
+        }
+
+        .research-content h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.4;
+        }
+
+        .research-content p {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.7;
+        }
+
+        .research-content p:last-of-type {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .research-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .research-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-accent);
+            padding: 0.35rem 0.75rem;
+            background: rgba(184, 134, 11, 0.08);
+            border-radius: var(--radius);
+            transition: all 0.2s ease;
+        }
+
+        .research-links a:hover {
+            background: rgba(184, 134, 11, 0.15);
+            color: var(--color-accent);
+        }
+
+        .research-links a svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Publications */
+        .pub-year {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent);
+            display: inline-block;
+        }
+
+        .pub-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .pub-item {
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-border-light);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: var(--spacing-sm);
+            align-items: start;
+        }
+
+        .pub-item:last-child {
+            border-bottom: none;
+        }
+
+        .pub-authors {
+            font-size: 0.95rem;
+            color: var(--color-text);
+            margin-bottom: 0.25rem;
+        }
+
+        .pub-authors strong {
+            font-weight: 600;
+        }
+
+        .pub-title {
+            font-size: 0.95rem;
+            color: var(--color-text);
+            margin-bottom: 0.25rem;
+            line-height: 1.5;
+        }
+
+        .pub-venue {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            font-style: italic;
+        }
+
+        .pub-venue .venue-name {
+            font-weight: 600;
+            color: var(--color-accent);
+            font-style: normal;
+        }
+
+        .pub-badge {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 3px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .pub-badge.ccf-a {
+            background: #c41e3a;
+        }
+
+        .pub-badge.jcr-q1 {
+            background: #2d5a27;
+        }
+
+        /* Awards */
+        .awards-list {
+            display: grid;
+            gap: 0;
+        }
+
+        .award-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-border-light);
+            font-size: 0.95rem;
+        }
+
+        .award-item:last-child {
+            border-bottom: none;
+        }
+
+        .award-item::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Services */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .service-block h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-block ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .service-block li {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .service-block li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            opacity: 0.5;
+        }
+
+        /* Grants */
+        .grant-item {
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .grant-item:last-child {
+            border-bottom: none;
+        }
+
+        .grant-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.25rem;
+        }
+
+        .grant-meta {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .grant-meta span {
+            display: inline-block;
+            margin-right: var(--spacing-sm);
+        }
+
+        .grant-source {
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg) 0;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 var(--spacing-md);
+            }
+
+            .nav-links {
+                gap: var(--spacing-sm);
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+
+            main {
+                padding: 0 var(--spacing-md);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: calc(64px + var(--spacing-lg));
+                padding-bottom: var(--spacing-lg);
+            }
+
+            .hero-image {
+                width: 140px;
+                height: 170px;
+            }
+
+            .hero-name {
+                font-size: 2rem;
+            }
+
+            .hero-name-zh {
+                font-size: 1.4rem;
+            }
+
+            .research-card {
+                grid-template-columns: 1fr;
+            }
+
+            .news-item {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+            }
+
+            .pub-item {
+                grid-template-columns: 1fr;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--color-accent);
+            transform: translateY(-3px);
+        }
+
+        .scroll-top svg {
+            width: 20px;
+            height: 20px;
         }
     </style>
 </head>
 
 <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Jingjing Wang, Soochow University</a>
-                <!--
-          <a class="navbar-brand" href="#">Project name</a>
-          -->
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#Recent-Research">Research</a></li>
-                    <li><a href="#publication">Publications</a></li>
-                    <!-- <li><a href="#award">Awards</a></li> -->
-                    <!-- <li><a href="data.html">Data</a></li> -->
-                </ul>
-            </div><!--/.navbar-collapse -->
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">Jingjing Wang <span>/ Soochow University</span></a>
+            <ul class="nav-links">
+                <li><a href="#about" class="active">About</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#services">Services</a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <!-- <div id="particles"></div> -->
-        <div class="container">
-            <div class="row">
-                <p></p>
-
-    
-                <div class="col-md-2" style="margin-right: 0px;">
-                    <img height="160" src="./img/djwang.png" align="left" hspace="6"
-                        style="margin-left:-6p;margin-right:10px">
-                </div>
-                <p></p>
-                <div class="col-md-9">
-                    <b>
-                        <font size="5"> Jingjing Wang 王晶晶 </font>
-                    </b>
-                    <p></p>
-                    <p> <b>Associate Professor, Natural Language Processing Lab, Soochow University </b></p>
-                    <p> <b> Email: djingwang@suda.edu.cn</b></p>
-                    <p> <b> Address: No.1, Shizi Street, Suzhou, China, 215006 </b>
-                    </p>
-                </div>
-            </div>
-
-            <div class="row" id="About">
-                <div class="col-md-12">
-                    <p> I am an Associate Professor at <a target="_blank" href="https://scst.suda.edu.cn/">School of
-                            Computer
-                            Science and Technology</a>, <a target="_blank" href="http://www.suda.edu.cn/">Soochow
-                            University</a>.
-                        I am also a Senior Technical Consultant (Part-time) at <a target="_blank"
-                            href="https://careers.microsoft.com/v2/global/en/locations/suzhou.html">Microsoft (Asia), China</a>.
-                        My research interests focus on Multimodal Computing (especially for Multimodal Information Extraction, Visual-Language
-                        Understanding and Generation, Embodied Intelligence), Affective Computing, Large Language
-                        Models and AI for
-                        Medical Diagnosis.
-                        I received my Ph.D. degree from <a target="_blank" href="http://www.suda.edu.cn/">Soochow
-                            University</a> in 2019, fortunately advised by <a target="_blank"
-                            href="https://scholar.google.com/citations?user=KELQj9cAAAAJ&hl=zh-CN">Prof. Guodong
-                            Zhou</a> and <a target="_blank"
-                            href="https://scholar.google.com.hk/citations?user=ZRGSxdUAAAAJ&hl=en">Prof. Shoushan
-                            Li</a>. During my career, I am also working with <a target="_blank"
-                            href="https://scholar.google.com/citations?user=CncXH-YAAAAJ&hl=en">Prof. Min Zhang</a> for
-                        advancing Natural Language Processing and Artificial Intelligence
-                        technology to benefit humanity.
-
-                    </p>
-                    <p> 
-                    王晶晶，苏州大学副教授，微软访问学者，苏州大学自然语言处理（NLP）实验室博士，兼任微软（亚洲）工程院高级技术顾问，
-                        主要致力于人工智能（AI）领域中Multimodal Computing (especially for Multimodal Information Extraction, 
-                        Visual-Language Understanding and Generation, Embodied Intelligence), Affective Computing, Large Language
-                        Models and AI for Medical Diagnosis等方向的研究。
-                    截止目前，已在CCF-A类顶会和顶刊，例如ACL、AAAI、WWW、MM、IJCAI、SCIS等发表AI与NLP相关论文数十篇，并主持与参与国家项目多项，拥有多项授权专利。
-                        此外担任AI、NLP领域国际顶级会议ACL、AAAI、WWW、MM、IJCAI等的Area Chair、PC，CCCF期刊编委以及TASLP、TAFFC、SCIS、中国科学、软件学报等国内外重要学术期刊审稿人。
-                    目前合作的企业包括：Microsoft、阿里达摩院、蚂蚁金服等，也乐于推荐本组的学生到上述企业交流、实习与工作。人生寄语：“知者行之始，行者知之成”。
-                    </p>
-                    <p>
-                        <font color="red">Welcome <u>highly-motivated</u> students to join my team.</font>
-                        Perspective candidates are welcome to email me with your CV or research interests for detailed consultation.
-                        Regarding recommendation letters, please be advised that I would like to provide substantive
-                        evaluations for candidates with whom I have already had a meaningful collaboration. This would allow me to objectively assess your research competencies, scholarly
-                        contributions, and professional development through sustained engagement.
-                    </p>
-                </div>
-            </div>
-
-
-            <div class="row" id="Updates & News">
-                <div class="col-md-12">
-                    <div class="page-header">
-                        <h3><b>
-                        <font size="4.5">Updates & News</font></b></h3>
-                         <li style="margin:10px"> <b>[Jan. 14, 2026]</b> 🔥 Two papers by Yujie and Jiamin in my team are accepted by WWW 2026 (CCF A). </li>
-                         <li style="margin:10px"> <b>[Nov. 08, 2025]</b> 🔥 One paper (oral) by Jiawen in my team is accepted by AAAI 2026 (CCF A). </li>
-                         <li style="margin:10px"> <b>[Jul. 05, 2025]</b> 🚀 Two papers by Junxiao and Jiamin in my team are accepted by ACM MM 2025 (CCF A). </li>
-                        <li style="margin:10px"> <b>[June 21, 2025]</b> 🐂 My four students (Yu Tan, Jianing, Yiding & Jipeng)
-                            achieve the Outstanding Graduating Postgraduate. </li>
-                        <li style="margin:10px"> <b>[June 01, 2025]</b> 🔥 Our paper "Boosting LLM's.." is
-                            accepted by TASLP 2025 (Top Journal, JCR Q1). </li>
-                        <li style="margin:10px"> <b>[May 15, 2025]</b> 🔥 "Table-Critic: A Multi-Agent Framework.." is
-                            accepted by ACL 2025 main conference (CCF A). </li>
-                        <li style="margin:10px"> <b>[Jan. 21, 2025]</b> 🚀 Two papers ("Sherlock" & "Omni-SILA") are
-                            accepted by WWW 2025 (CCF A). </li>
-
-                        <li style="margin:10px"> <b>[Dec. 28, 2024]</b> 🐂 Two students (Yu Tan & Jianing Zhao) in my team
-                            achieve the National Scholarship. </li>
-
-                        <li style="margin:10px"> <b>[Dec. 10, 2024]</b> 🔥
-                            "SQLFixAgent: Towards Semantic-Accurate Text-to-SQL Parsing" is accepted by AAAI 2025 (CCF
-                            A). </li>
-
-                        <li style="margin:10px"> <b>[Dec. 01, 2024]</b> 🔥
-                            "TACL: A Trusted Action-enhanced Curriculum Learning Approach</a>" is accepted by
-                            Neurocomputing (Top Journal, JCR Q1). </li>
-
-                        <li style="margin:10px"> <b>[Jul. 16, 2024]</b> 🚀 Two papers ("Emotion-enriched Text-to-Motion
-                            Generation" & "Hawkeye") are accepted by ACM MM 2024 (CCF A). </li>
-
-                        <li style="margin:10px"> <b>[Feb. 20, 2024]</b> 🚀 Three papers ("ChatASU" etc.) are accepted by COLING 2024 (CCF B). </li>
-
-
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <img src="./img/djwang.png" alt="Jingjing Wang" class="hero-image animate-in">
+            <div class="hero-content">
+                <h1 class="hero-name animate-in delay-1">Jingjing Wang</h1>
+                <p class="hero-name-zh animate-in delay-1">王晶晶</p>
+                <p class="hero-title animate-in delay-2">Associate Professor, NLP Lab</p>
+                <div class="hero-info animate-in delay-2">
+                    <div class="hero-info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>
+                        </svg>
+                        <span>School of Computer Science and Technology, Soochow University</span>
+                    </div>
+                    <div class="hero-info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <a href="mailto:djingwang@suda.edu.cn">djingwang@suda.edu.cn</a>
+                    </div>
+                    <div class="hero-info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Suzhou, China</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="container" id="Recent-Research">
-        <div class="row" id="Recent-Research">
-            <div class="col-md-12">
-                <h2><b>
-                        <font size="5">Selected Research</font></b></h2>
-
-                <div class="page-header">
-                    <h4><b>Multi-Agent System for Structured Information Extraction and Generation</b></h4>
-                </div>
-                <img width="600" src="./img/aaai2025.svg" align="left"
-                    style="margin-left:0px;margin-right:20px;margin-bottom:10px" class="model-img">
-                <p>
-                   This research focuses on advancing Text-to-SQL parsing by addressing the critical challenge of semantic accuracy in LLM-generated SQL queries. While fine-tuned large language models excel at producing syntactically valid SQL, they often struggle with semantic consistency, leading to unreliable results in real-world applications.
-                </p>
-                <p>
-                    To tackle this issue, we introduce SQLFixAgent    (<a target="_blank"
-                        href="./works/SQLFixAgent.pdf">Cen
-                        et al., AAAI'2025</a>), a novel multi-agent collaborative framework designed to detect and repair erroneous SQL queries. 
-                    SQLFixAgent integrates three specialized agents: 
-                    1) SQLReviewer: Identifies semantic mismatches using rubber duck debugging principles.
-                    2) QueryCrafter: Generates diverse candidate SQL repairs by perturbing user queries.
-                    3) SQLRefiner: Selects the optimal repair through retrieval-augmented reflection and failure memory.
-                </p>
-                This framework achieves a 3% improvement in execution accuracy on the challenging BIRD benchmark while maintaining high token efficiency, making it practical for deployment.
-Beyond this, we investigate robust Text-to-SQL parsing across diverse scenarios, including domain knowledge integration (Spider-DK) and synonym robustness (Spider-Syn). 
-                    Our work also explores the synergy between fine-tuned and foundation LLMs, demonstrating how agent collaboration can compensate for individual model limitations.
-
-                 In addition, we propose Table-Critic (<a target="_blank"
-                        href="./works/Table-Critic.pdf">Yu
-                        et al., ACL'2025</a>), a novel multi-agent framework designed to enhance structured table reasoning through collaborative error detection and refinement. While large language models (LLMs) excel in many reasoning tasks, they often struggle with maintaining consistency in multi-step table-based reasoning, leading to cascading errors.
-Table-Critic demonstrates how structured collaboration among LLM-based agents can overcome inherent limitations in complex reasoning tasks, offering a scalable and interpretable approach for real-world applications in data analysis and decision support.
-                 
-                <p>
-                    <b>Papers: </b>
-                    [<a target="_blank"
-                        href="./works/SQLFixAgent.pdf">Cen
-                        et al., AAAI'2025</a>] [<a target="_blank"
-                            href="https://github.com/Cen-Jipeng-SUDA/SQLFixAgent">Code</a>] [<a target="_blank"
-                        href="./works/SQLFixAgent.pdf">PDF</a>], 
-                    
-                    [<a target="_blank"
-                        href="./works/Table-Critic.pdf">Yu
-                        et al., ACL'2025</a>] [<a target="_blank"
-                            href="https://github.com/Peiying-Yu/Table-Critic">Code</a>] [<a target="_blank"
-                        href="./works/Table-Critic.pdf">PDF</a>]
-                </p>
-
-                
-
-
-             <p></p>
-                <div class="page-header">
-                    <h4><b>Multimodal Foundation Model for Video Understanding and Grounding</b></h4>
-                </div>
-                <img width="600" src="./img/hawkeye.svg" align="left" style="margin-left:0px;margin-right:20px"
-                    class="model-img">
-                <p>
-                    The goal is to establish a unified framework for video anomaly detection, advancing precision in
-                    identifying and localizing abnormal events across dynamic scenes while enabling interpretable
-                    analysis
-                    of complex visual patterns.
-                </P>
-                <p>
-                    Starting from real-world applications in surveillance and social media analysis, we introduce
-                    Hawkeye (<a target="_blank"
-                        href="./works/Hawkeye Discovering and Grounding Implicit Anoma-lous Sentiment in Recon-videos via Scene-enhanced Video Large Language Model.pdf">Zhao
-                        et al., ACM MM'24</a>)
-                    , the first scene-enhanced video-language model designed for anomaly detection. Hawkeye
-                    integrates multimodal context
-                    (visual-textual-temporal cues) to recognize subtle anomalies and pinpoint their temporal
-                    boundaries in untrimmed videos,
-                    This work lays a critical foundation for event typing and spatiotemporal
-                    localization in short video understanding.
-                </p>
-                <p>
-                    Building on this, we investigate low-resource scenarios where annotated anomaly data is scarce.
-                    Our Continuous
-                    Attention Modeling method (<a target="_blank" href="./works/针对低资源场景下连续情感分析任务的持续注意力建模.pdf">Zhang et
-                        al., JOS'23</a>) enhances adaptability by capturing long-range
-                    dependencies
-                    in sparse anomaly signals. Further, we extend Hawkeye with self-supervised learning to uncover
-                    latent patterns
-                    across unlabeled videos, improving generalization to unseen anomaly types.
-                    To scale solutions, we construct a benchmark suite combining large-scale anomaly annotations and
-                    instruction-tuned datasets.
-                    This addresses the challenge of diverse event types (e.g., accidents, unusual behaviors) and
-                    supports downstream tasks
-                    like explainable reasoning.
-                </p>
-<!--                 <p>
-                    目标​​是构建统一的视频异常检测框架，在动态场景中提升异常事件识别与定位的精度，同时实现对复杂视觉模式的可解释分析。
-                    ​从安防监控与社交媒体分析的实际需求出发​​，我们提出首个场景增强的视频-语言模型Hawkeye（ACM MM-2024）。该模型融合视觉、
-                    文本与时序线索，能够识别短视频中细微的异常行为并精确定位其时空边界（如图2.1所示），为短时视频的事件类型划分与时空定位奠定重要基础。
-                    ​​针对低资源场景​​（标注数据稀缺），我们提出连续注意力建模方法（软件学报，张等人），通过捕捉稀疏异常信号的长程依
-                    赖关系提升模型适应性。进一步扩展Hawkeye至自监督学习框架，挖掘未标注视频的潜在模式以增强对未见异常类型的泛化能力
-                    （赵等人，审稿中）。                
-                    ​​为扩大解决方案规模​​，我们构建了融合大规模异常标注与指令微调数据集的基准测试套件，解决事件类型多样性（如事故、异常行为）
-                    的挑战，并支持可解释推理等下游任务（刘等人，COLING-2024）。
-                </p> -->
-                <p>
-                    <b>Papers: </b>                 
-                    [<a target="_blank" href="./works/针对低资源场景下连续情感分析任务的持续注意力建模.pdf">Zhang et al., JOS'23</a>],
-                    [<a target="_blank"
-                        href="https://dl.acm.org/doi/10.1145/3664647.3681407">Zhao
-                        et al., ACM MM'24 </a>] [<a target="_blank"
-                            href="https://github.com/Zhao-Jianing-SUDA/Hawkeye">Code</a>] [<a target="_blank"
-                        href="./works/Hawkeye Discovering and Grounding Implicit Anoma-lous Sentiment in Recon-videos via Scene-enhanced Video Large Language Model.pdf">PDF</a>]
-
-                </p>
-
-
-
-
-                
-<!--                 <div class="page-header">
-                    <h4><b>Foundation Model for Multimodal Generation</b></h4>
-                </div>
-                <img width="600" src="./img/L3EM.svg" align="left"
-                    style="margin-left:0px;margin-right:20px;margin-bottom:10px" class="model-img">
-                <p>
-                    The goal​​ is to establish an emotion-driven framework for multimodal large language model (LLM)
-                    video generation
-                    , achieving cross-modal semantic alignment and high-fidelity emotional action synthesis while
-                    enhancing
-                    controllability and realism in generated content.
-                </p>
-                <p>
-                    Starting from the core demand of multimodal interaction, we propose LLM-Guided Emotion-Action
-                    Synthesis
-                    (<a target="_blank"
-                        href="./works/Towards Emotion-enriched Text-to-Motion Generation via LLM-guided Limb-level Emotion Manipulating.pdf">Yu
-                        et al., ACM MM'2024</a>),
-                    the first method to jointly model text emotion semantics and human motion sequences for
-                    emotionally rich video generation
-                    This work enables precise conveyance of complex emotions (e.g., "excited waving") in synthetic
-                    videos, providing critical support for emotion-aware short video editing.
-                </p>
-                <p>
-                    To address cross-modal alignment challenges, we introduce two innovations:
-                    1) A Trustworthy Reflection Mechanism (<a target="_blank"
-                        href="./works/TACL- A Trusted Action-enhanced Curriculum Learning Approach to Multimodal Affective Computing.pdf">Yu
-                        et al., Neurocomputing'2024</a>)
-                    that dynamically calibrates generation intent with emotional
-                    labels, improving semantic coherence in action outputs;
-                    2) Latent Diffusion Models
-                    that jointly model emotion-themed distributions across text, audio,
-                    and motion modalities in latent space, overcoming efficiency bottlenecks of pixel-level
-                    generation.
-
-                    To scale practical applications, we construct the first benchmark dataset for emotion-driven
-                    action generation,
-                    containing 100K+ emotion-annotated human motion sequences and multimodal instruction pairs.
-                    Based on this, we propose
-                    AutoEmoDirector, a framework enabling users to edit video emotion intensity and motion styles
-                    via natural language instructions
-                    (e.g., "transform a joyful dance into a sorrowful stroll"), significantly lowering the barrier
-                    for video content creation.
-                </p>
-
-                <!-- <p>
-                    目标​​是构建情感驱动的大模型视频生成框架，实现跨模态语义对齐与高保真情感动作合成，同时提升生成结果的可控性与真实性。
-                    ​​从多模态交互的核心需求出发​​，我们提出LLM-Guided Emotion-Action Synthesis（ACM MM-2024），通过大语言模型引导肢体
-                    动作的细粒度情感表达（如图2.2所示）。该方法首次将文本情感语义与人体运动序列联合建模，生成的视频能精准传递愤怒、喜
-                    悦等复杂情感（如"激动地挥手"），为情感化短视频编辑提供关键技术支持。  
-                    ​​针对跨模态对齐难题​​，我们提出两种创新方法：1）改进大语言模型的可信反思机制（Liu et al., COLING-2024），通过动态校
-                    准生成意图与情感标签的一致性，提升动作生成的语义合理性；2）设计隐空间扩散模型（Luo et al., COLING-2024），在潜在
-                    空间联合建模文本、音频与动作模态的情感主题分布，突破传统像素级生成的效率瓶颈。
-                    ​​为推动规模化应用​​，我们构建了首个情感动作生成基准数据集，包含10万+条带情感标注的人体动作序列与多模态指令对。基于此，
-                    我们提出AutoEmoDirector框架，支持用户通过自然语言指令实时编辑视频中的情感强度与动作风格（如"将欢快舞蹈转为悲伤漫步
-                    "），显著降低视频创作门槛。
-                </p> -->
-
-<!--                 <p>
-                    <b>Papers: </b>
-                    (<a target="_blank"
-                        href="./works/Towards Emotion-enriched Text-to-Motion Generation via LLM-guided Limb-level Emotion Manipulating.pdf">Yu
-                        et al., ACM MM'2024</a>)
-                    
-                    (<a target="_blank"
-                        href="./works/TACL- A Trusted Action-enhanced Curriculum Learning Approach to Multimodal Affective Computing.pdf">Yu
-                        et al., Neurocomputing'2024</a>)
-                </p>
-
-                
-            </div> --> 
-
+        <!-- About Section -->
+        <section id="about">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">About</h2>
             </div>
-        </div>
-    </div>
-    <div class="container" id="publication">
-        <div class="row" id="publication">
-            <div class="col-md-12">
-                <h2><b>
-                        <font size="5">Publications</font></b></h2>
-                <div class="sectionbody">
-                    <div class="paragraph">
-                        <p><b>2025</b></p>
-                    </div>
-                    <div class="olist arabic">
-                        <ol class="arabic">
- 
-                          <li>
-                                <p>
-                                    Peiying Yu, Guoxing Chen, <strong>Jingjing Wang</strong>.
-                                    <em>Table-Critic: A Multi-Agent Framework for Collaborative Criticism and Refinement in Table Reasoning</em>. In Proceedings of the Annual Meeting of the Association for Computational Linguistics
-                                     (<strong>ACL, Main Conference</strong>), 2025. (CCF A, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Jipeng Cen, Jiaxin Liu, Zhixu Li, <strong>Jingjing Wang</strong>. <em>SQLFixAgent:
-                                        Towards
-                                        Semantic-Accurate Text-to-SQL Parsing via Consistency-Enhanced Multi-Agent
-                                        Collaboration</em>. In Proceedings of the AAAI Conference on Artificial Intelligence
-                                    (<strong>AAAI</strong>), 2025. (CCF A, Corresponding Author)
-                                </p>
-                            </li>
-							                            <li>
-                                <p>
-                                    Junxiao Ma, <strong>Jingjing Wang</strong>, Jiamin Luo, Min Zhang, Guodong Zhou.
-                                    <em>Skynet-V1: Towards Early Warning of Video Abnormal Events via A Spa-tial-temporal Causal-enhanced MoE Framework</em>. In Proceedings of the Web Conference
-                                    (<strong>ACM MM</strong>), 2025. (CCF A, Corresponding Author)
-                                </p>
-                            </li>
+            <div class="about-text">
+                <p>
+                    I am an Associate Professor at <a href="https://scst.suda.edu.cn/" target="_blank">School of Computer Science and Technology</a>, <a href="http://www.suda.edu.cn/" target="_blank">Soochow University</a>. I am also a Senior Technical Consultant (Part-time) at <a href="https://careers.microsoft.com/v2/global/en/locations/suzhou.html" target="_blank">Microsoft (Asia), China</a>.
+                </p>
+                <p>
+                    My research interests focus on <strong>Multimodal Computing</strong> (especially for Multimodal Information Extraction, Visual-Language Understanding and Generation, Embodied Intelligence), <strong>Affective Computing</strong>, <strong>Large Language Models</strong> and <strong>AI for Medical Diagnosis</strong>.
+                </p>
+                <p>
+                    I received my Ph.D. degree from Soochow University in 2019, advised by <a href="https://scholar.google.com/citations?user=KELQj9cAAAAJ&hl=zh-CN" target="_blank">Prof. Guodong Zhou</a> and <a href="https://scholar.google.com.hk/citations?user=ZRGSxdUAAAAJ&hl=en" target="_blank">Prof. Shoushan Li</a>. I also collaborate with <a href="https://scholar.google.com/citations?user=CncXH-YAAAAJ&hl=en" target="_blank">Prof. Min Zhang</a> for advancing NLP and AI technology.
+                </p>
+                <p class="highlight">
+                    Welcome <strong>highly-motivated</strong> students to join my team. Perspective candidates are welcome to email me with your CV or research interests.
+                </p>
+            </div>
+        </section>
 
+        <!-- News Section -->
+        <section id="news">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Updates & News</h2>
+            </div>
+            <ul class="news-list">
+                <li class="news-item">
+                    <span class="news-date">Jan. 14, 2026</span>
+                    <span class="news-content"><span class="emoji">🔥</span>Two papers by Yujie and Jiamin accepted by <strong>WWW 2026</strong> <span class="badge">CCF A</span></span>
+                </li>
+                <li class="news-item">
+                    <span class="news-date">Nov. 08, 2025</span>
+                    <span class="news-content"><span class="emoji">🔥</span>One paper (oral) by Jiawen accepted by <strong>AAAI 2026</strong> <span class="badge">CCF A</span></span>
+                </li>
+                <li class="news-item">
+                    <span class="news-date">Jul. 05, 2025</span>
+                    <span class="news-content"><span class="emoji">🚀</span>Two papers by Junxiao and Jiamin accepted by <strong>ACM MM 2025</strong> <span class="badge">CCF A</span></span>
+                </li>
+                <li class="news-item">
+                    <span class="news-date">Jun. 21, 2025</span>
+                    <span class="news-content"><span class="emoji">🐂</span>Four students (Yu Tan, Jianing, Yiding & Jipeng) achieve Outstanding Graduating Postgraduate</span>
+                </li>
+                <li class="news-item">
+                    <span class="news-date">Jun. 01, 2025</span>
+                    <span class="news-content"><span class="emoji">🔥</span>Paper "Boosting LLM's.." accepted by <strong>TASLP 2025</strong> <span class="badge">JCR Q1</span></span>
+                </li>
+                <li class="news-item">
+                    <span class="news-date">May. 15, 2025</span>
+                    <span class="news-content"><span class="emoji">🔥</span>"Table-Critic" accepted by <strong>ACL 2025</strong> <span class="badge">CCF A</span></span>
+                </li>
+                <li class="news-item">
+                    <span class="news-date">Jan. 21, 2025</span>
+                    <span class="news-content"><span class="emoji">🚀</span>Two papers ("Sherlock" & "Omni-SILA") accepted by <strong>WWW 2025</strong> <span class="badge">CCF A</span></span>
+                </li>
+                <li class="news-item">
+                    <span class="news-date">Dec. 28, 2024</span>
+                    <span class="news-content"><span class="emoji">🐂</span>Two students (Yu Tan & Jianing Zhao) achieve National Scholarship</span>
+                </li>
+                <li class="news-item">
+                    <span class="news-date">Dec. 10, 2024</span>
+                    <span class="news-content"><span class="emoji">🔥</span>"SQLFixAgent" accepted by <strong>AAAI 2025</strong> <span class="badge">CCF A</span></span>
+                </li>
+                <li class="news-item">
+                    <span class="news-date">Jul. 16, 2024</span>
+                    <span class="news-content"><span class="emoji">🚀</span>Two papers ("Emotion-enriched Text-to-Motion Generation" & "Hawkeye") accepted by <strong>ACM MM 2024</strong> <span class="badge">CCF A</span></span>
+                </li>
+            </ul>
+        </section>
 
-									                            <li>
-                                <p>
-                                    Na Jiang , Jiamin Luo, Xuqiang Gu, <strong>Jingjing Wang</strong>.
-                                    <em>SOmniDoctor: Towards LLM-centric Lifelong Learning for New Emerging Medical VQA Tasks</em>. In Proceedings of the Web Conference
-                                    (<strong>ACM MM</strong>), 2025. (CCF A, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Junxiao Ma, <strong>Jingjing Wang</strong>, Jiamin Luo, Peiying Yu, Guodong Zhou.
-                                    <em>Sherlock:
-                                        Towards Multi-scene Video Abnormal Event Extraction and Localization via a
-                                        Global-local Spatial-sensitive LLM</em>. In Proceedings of the Web Conference
-                                    (<strong>WWW</strong>), 2025. (CCF A, Corresponding Author)
-                                </p>
-                            </li>
-                             <li>
-                                <p>
-                                    Jipeng Cen, Jiaxin Liu, Zhixu Li, <strong>Jingjing Wang</strong>. <em>CPO-SQL: Boosting Small LLMs for Text-to-SQL
-via Efficient In-Context Learning and Preference
-Optimization</em>. In Proceedings of the International Conference on Natural Language Processing and Chinese Computing
-                                    (<strong>NLPCC</strong>), 2025. (CCF C, Corresponding Author)
-                                </p>
-                            </li>
-                           <li>
-                                <p>
-                                    Jiamin Luo, <strong>Jingjing Wang</strong>, Junxiao Ma, Yujie Jin, Shoushan Li,
-                                    Guodong Zhou.
-                                    <em>Omni-SILA: Towards Omni-scene Driven Visual Sentiment Identifying, Locating
-                                        and Attributing in Videos</em>. In Proceedings of the Web Conference (<strong>WWW</strong>),
-                                    2025. (CCF A, Corresponding Author)
-                                </p>
-                            </li> 
+        <!-- Research Section -->
+        <section id="research">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Selected Research</h2>
+            </div>
+            <div class="research-grid">
+                <div class="research-card">
+                    <img src="./img/aaai2025.svg" alt="Multi-Agent System" class="research-image">
+                    <div class="research-content">
+                        <h4>Multi-Agent System for Structured Information Extraction and Generation</h4>
+                        <p>
+                            This research focuses on advancing Text-to-SQL parsing by addressing the critical challenge of semantic accuracy in LLM-generated SQL queries. We introduce <strong>SQLFixAgent</strong> (Cen et al., AAAI'2025), a novel multi-agent collaborative framework designed to detect and repair erroneous SQL queries.
+                        </p>
+                        <p>
+                            SQLFixAgent integrates three specialized agents: SQLReviewer identifies semantic mismatches, QueryCrafter generates diverse candidate repairs, and SQLRefiner selects the optimal solution through retrieval-augmented reflection.
+                        </p>
+                        <p>
+                            We also propose <strong>Table-Critic</strong> (Yu et al., ACL'2025), a multi-agent framework designed to enhance structured table reasoning through collaborative error detection and refinement.
+                        </p>
+                        <div class="research-links">
+                            <a href="./works/SQLFixAgent.pdf">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                SQLFixAgent PDF
+                            </a>
+                            <a href="https://github.com/Cen-Jipeng-SUDA/SQLFixAgent" target="_blank">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                Code
+                            </a>
+                            <a href="./works/Table-Critic.pdf">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                Table-Critic PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-                            <li>
-                                <p>
-                                    Luo Jiamin, <strong>Jingjing Wang</strong>, Zhou Guodong <em>Multi-modal Reliability-aware
-                                        Affective Computing</em>. Ruan Jian Xue Bao/Journal of Software
-                                    (<strong>JOS</strong>), 2025, 36(2):537-553. (CCF A in Chinese Journal, EI, Corresponding Author)
-                                </p>
-                            </li>
-				     <li>
-                                <p>
-                                    Han Zhang, <strong>Jingjing Wang</strong>, Jiamin Luo, Min Zhang, Guodong Zhou.
-                                    <em>Boosting LLM's Continual Sentiment Understaning for Low-resource Languages</em>. IEEE/ACM Transactions on Audio, Speech, and Language Processing
-                                     (<strong>TASLP</strong>), 2025. (SCI, JCR Q1, Corresponding Author)
-                                </p>
-                            </li> 
-                            <li>
-                                <p>
-                                    Tan Yu, <strong>Jingjing Wang</strong>, Jiamin Luo, Jiawen Wang, Guodong Zhou.
-                                    <em>TACL: A
-                                        Trusted Action-enhanced Curriculum Learning Approach to Multimodal Affective
-                                        Computing</em>. Neurocomputing, 2025, 620:129195. (SCI, JCR Q1, Corresponding Author)
-                                </p>
-                            </li>
-                        </ol>
-                    </div>
-
-                    <div class="paragraph">
-                        <p><b>2024</b></p>
-                    </div>
-                    <div class="olist arabic">
-                        <ol class="arabic">
-                            <li>
-                                <p>
-                                    Jianing Zhao, <strong>Jingjing Wang</strong>, Yujie Jin, Jiamin Luo, Guodong Zhou. <em>Hawkeye:
-                                        Discovering and
-                                        Grounding Implicit Anomalous Sentiment in Recon-videos via Scene-enhanced
-                                        Video Large Language Model</em>. In Proceedings of the ACM International Conference
-                                    on Multimedia (<strong>ACM MM</strong>), 2024, 592-601. (CCF A, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Tan Yu, <strong>Jingjing Wang</strong>, Jiawen Wang, Jiamin Luo, Guodong Zhou. <em>Towards Emotion-enriched
-                                        Text-to-Motion Generation via LLM-guided Limb-level Emotion
-                                        Manipulating</em>. In Proceedings of the ACM International Conference on Multimedia
-                                    (<strong>ACM MM</strong>), 2024, 612-621. (CCF A, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Han Zhang, <strong>Jingjing Wang</strong>, Jiamin Luo, Guodong Zhou. <em>Continual Attention
-                                        Modeling for Sucessive Sentiment Analysis in Low resource Scenarios</em>.
-                                    Ruan Jian Xue Bao/Journal of Software (<strong>JOS</strong>), 2024,
-                                    35(12):5470-5486. (CCF A in Chinese
-                                    Journal, EI, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Yiding Liu, <strong>Jingjing Wang</strong>, Jiamin Luo, Tao Zeng, Guodong Zhou. <em>ChatASU: Evoking LLM's
-                                        Reflexion to Truly Understand Aspect Sentiment in Dialogues</em>.
-                                    In Proceedings of the International Conference on Computational Linguistics
-                                    (<strong>COLING</strong>), 2024, 3075-3085. (CCF B, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Jiamin Luo, Jianing Zhao, <strong>Jingjing Wang</strong>, Guodong Zhou. <em>How to Understand
-                                        'Support'? An Implicit-enhanced Causal Inference Approach for
-                                        Weakly-supervised Phrase Grounding</em>. In Proceedings of the International Conference on
-                                    Computational Linguistics (<strong>COLING</strong>), 2024. (CCF B, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Jiamin Luo, <strong>Jingjing Wang</strong>, Guodong Zhou. <em>TopicDiff: A Topic-enriched
-                                        Diffusion Approach for Multimodal Conversational Emotion Detection</em>.
-                                    In Proceedings of the International Conference on Computational Linguistics (<strong>COLING</strong>),
-                                    2024. (CCF B, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Jiamin Luo, <strong>Jingjing Wang</strong>, Guodong Zhou. <em>Topic-Enriched Variational
-                                        Transformer for Conversational Emotion Detection</em>. In Proceedings of the International
-                                    Conference on Natural Language Processing and Chinese Computing
-                                    (<strong>NLPCC</strong>),
-                                    2024, 3-15. (CCF C, Corresponding Author)
-                                </p>
-                            </li>
-                        </ol>
-                    </div>
-
-                    <div class="paragraph">
-                        <p><b>2023</b></p>
-                    </div>
-                    <div class="olist arabic">
-                        <ol class="arabic">
-                            <li>
-                                <p>
-                                    Yiding Liu, <strong>Jingjing Wang</strong>, Jiamin Luo, Guodong Zhou. <em>LLM-Grounded Conversation
-                                        Aspect Sentiment Understanding via Muti-Agent Consistency Reflection</em>.
-                                    Ruan Jian Xue Bao/Journal of Software (<strong>JOS</strong>), 2023. (CCF A in Chinese Journal, EI, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Jianing Zhao, <strong>Jingjing Wang</strong>, Jiamin Luo, Guodong Zhou. <em>Implicit-enhanced Causal
-                                        Modeling for Phrasal Visual Grounding</em>. Ruan Jian Xue Bao/Journal of
-                                    Software (<strong>JOS</strong>), 2023. (CCF A in Chinese Journal, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Jingjing Wang</strong>, Jiamin Luo, Guodong Zhou. <em>Fine-Grained Question-Answer
-                                        Matching via Sentence-Aware Contrastive Self-supervised Transfer</em>. The
-                                    International Conference on Natural Language Processing and Chinese Computing
-                                    (<strong>NLPCC</strong>), 2023, 616-628. (CCF C)
-                                </p>
-                            </li>
-                                   <li>
-                                <p>
-                                    YOU Peiwen, <strong>Jingjing Wang</strong>, GAO Xiaoya, LI Shoushan.
-                                    <em>Cross-modal Speech Sentiment Classification Based on Knowledge Distillation</em>. Journal of Chinese Information Processing, 2023. (CCF B in Chinese Journal, Corresponding Author)
-                                </p>
-                                     </li>
-                        </ol>
-                    </div>
-
-                    <div class="paragraph">
-                        <p><b>2022</b></p>
-                    </div>
-                    <div class="olist arabic">
-                        <ol class="arabic">
-                            <li>
-                                <p>
-                                    Xiaoya Gao, <strong>Jingjing Wang</strong>, Shoushan Li, Min Zhang, Guodong Zhou.
-                                    <em>Cognition-driven multimodal
-                                        personality classification</em>. Journal of Science China and Information Sciences
-                                    (Sci China Inf Sci, <strong>SCIS</strong>), 2022, 65(10). (CCF A, JCR Q1, Corresponding Author)
-                                </p>
-                            </li>
-                              <li>
-                                <p>
-                                    YIN Yajue, GAO Xiaoya, <strong>Jingjing Wang</strong>, LI Shoushan, XU Shaoyang, ZENG Yuhao.
-                                    <em>Patent Matching with Multi-View Attentive Network</em>. Journal of Chinese Information Processing, 2022, 36(7). (CCF B in Chinese Journal, Corresponding Author)
-                                </p>
-                                     </li>
-                            <li>
-                                <p>
-                                    ZHANG Yawei, WU Liangqing <strong>Jingjing Wang</strong>, LI Shoushan.
-                                    <em>Multi-modal Emotion Recognition Based on Multi-LSTMs Fusion</em>. Journal of Chinese Information Processing, 2022, 36(5). (CCF B in Chinese Journal, Corresponding Author)
-                                </p>
-                            </li>
-                        </ol>
-                    </div>
-
-                    <div class="paragraph">
-                        <p><b>2021</b></p>
-                    </div>
-                    <div class="olist arabic">
-                        <ol class="arabic">
-                            <li>
-                                <p>
-                                    Xiaoya Gao, <strong>Jingjing Wang</strong>, Shoushan Li, Guodong Zhou. <em>Cognition-Driven
-                                        Real-Time Personality Detection via Language-Guided Contrastive Visual
-                                        Attention</em>. In Proceedings of the IEEE International Conference on Multimedia and Expo
-                                    (<strong>ICME</strong>), 2021, 1-6. (CCF B, Corresponding Author)
-                                </p>    
-                            </li>
-                                  <li>
-                                <p>
-                                    AN Minghui, <strong>Jingjing Wang</strong>, LIU Oiyuan, LI Lingin, ZHANG Daxin, LI Shoushan.
-                                    <em>Multimodal Hierarchical Dynamic Routing for Depression Detection</em>. Journal of Chinese Information Processing, 2021. (CCF B in Chinese Journal, Corresponding Author)
-                                </p> 
-                                  </li>
-                              <li>
-                                                                 
-                                <p>
-                                    CHEN Xiao, <strong>Jingjing Wang</strong>, LI Shoushan, WEI Siyi, ZHANG Xiaoyu, CHEN Qiang.
-                                    <em>Cross lingual Aspect Sentiment Classification Based on Multi channel BERT</em>. Journal of Chinese Information Processing, 2021. (CCF B in Chinese Journal, Corresponding Author)
-                                </p>
-                            </li>
-
-                        </ol>
-                    </div>
-
-                    <div class="paragraph">
-                        <p><b>2020</b></p>
-                    </div>
-                    <div class="olist arabic">
-                        <ol class="arabic">
-                            <li>
-                                <p>
-                                    Xiao Chen, Changlong Sun, <strong>Jingjing Wang</strong>, Shoushan Li, Luo Si, Min
-                                    Zhang, Guodong Zhou. <em>Aspect Sentiment
-                                        Classification with Document-level Sentiment Preference Modeling</em>.
-                                    Proceedings of the Annual Meeting of the Association for Computational Linguistics
-                                    (<strong>ACL</strong>), 2020, 3667-3677. (CCF A, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Jingjing Wang</strong>, Jiancheng Wang, Changlong Sun, Shoushan Li,
-                                    Xiaozhong Liu, Luo Si, Min Zhang, Guodong Zhou. <em>Sentiment
-                                        classification in customer service dialogue with
-                                        topic-aware multi-task learning</em>. In Proceedings of the AAAI Conference on
-                                    Artificial Intelligence (<strong>AAAI</strong>), 2020, 9177-9184. (CCF A, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Minghui An, <strong>Jingjing Wang</strong>, Shoushan Li, Guodong Zhou.
-                                    <em>Multimodal
-                                        topic-enriched auxiliary learning for depression detection</em>. In Proceedings
-                                    of the International Conference on Computational Linguistics
-                                    (<strong>COLING</strong>), 2020, 1078-1089. (CCF B, Corresponding Author)
-                                </p>
-                            </li>
-                        </ol>
+                <div class="research-card">
+                    <img src="./img/hawkeye.svg" alt="Video Understanding" class="research-image">
+                    <div class="research-content">
+                        <h4>Multimodal Foundation Model for Video Understanding and Grounding</h4>
+                        <p>
+                            The goal is to establish a unified framework for video anomaly detection, advancing precision in identifying and localizing abnormal events across dynamic scenes.
+                        </p>
+                        <p>
+                            We introduce <strong>Hawkeye</strong> (Zhao et al., ACM MM'24), the first scene-enhanced video-language model designed for anomaly detection. Hawkeye integrates multimodal context (visual-textual-temporal cues) to recognize subtle anomalies and pinpoint their temporal boundaries.
+                        </p>
+                        <p>
+                            Building on this, we investigate low-resource scenarios with our Continuous Attention Modeling method (Zhang et al., JOS'23) that enhances adaptability by capturing long-range dependencies in sparse anomaly signals.
+                        </p>
+                        <div class="research-links">
+                            <a href="./works/Hawkeye Discovering and Grounding Implicit Anoma-lous Sentiment in Recon-videos via Scene-enhanced Video Large Language Model.pdf">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                Hawkeye PDF
+                            </a>
+                            <a href="https://github.com/Zhao-Jianing-SUDA/Hawkeye" target="_blank">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                Code
+                            </a>
+                            <a href="https://dl.acm.org/doi/10.1145/3664647.3681407" target="_blank">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                ACM Link
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="container">
-        <div class="row" id="publication-before-2019">
-            <div class="col-md-12">
-                <div class="sectionbody">
-                    <div class="paragraph">
-                        <p><b>2019</b></p>
-                    </div>
-                    <div class="olist arabic">
-                        <ol class="arabic">
-                            <li>
-                                <p>
-                                    <strong>Jingjing Wang</strong>, Changlong Sun, Shoushan Li, Jiancheng Wang, Luo Si,
-                                    Min Zhang,
-                                    Xiaozhong Liu, Guodong Zhou. <em>Human-Like Decision Making:
-                                        Document-level Aspect Sentiment Classification via Hierarchical
-                                        Reinforcement Learning</em>. Proceedings of the Conference on Empirical
-                                    Methods in Natural Language Processing (<strong>EMNLP</strong>), 2019,
-                                    5585-5594. (CCF B)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Jingjing Wang</strong>, Changlong Sun, Shoushan Li, Xiaozhong Liu, Min
-                                    Zhang,
-                                    Luo Si, Guodong Zhou. <em>Aspect Sentiment Classification Towards
-                                        Question-Answering with Reinforced Bidirectional Attention Network</em>.
-                                    Proceedings of Annual Meeting of the Association for Computational Linguistics
-                                    (<strong>ACL</strong>), 2019. (CCF A)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Hanqian Wu, Shangbin Zhang, <strong>Jingjing Wang</strong>, Mumu Liu, Shoushan Li.
-                                    <em>Multi-label Aspect
-                                        Classification on Question-Answering Text with Contextualized Attention-Based
-                                        Neural Network</em>. Proceedings of China Conference on Chinese Language
-                                    Processing, 2019, 479-491. (EI, Corresponding Author)
-                                </p>
-                            </li>
-                        </ol>
-                    </div>
+        <!-- Publications Section -->
+        <section id="publications">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Publications</h2>
+            </div>
 
-                    <div class="paragraph">
-                        <p><b>2018</b></p>
+            <div class="pub-year">2025</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors"><strong>Peiying Yu</strong>, Guoxing Chen, <strong>Jingjing Wang</strong>.</p>
+                        <p class="pub-title">Table-Critic: A Multi-Agent Framework for Collaborative Criticism and Refinement in Table Reasoning.</p>
+                        <p class="pub-venue"><span class="venue-name">ACL 2025</span> (CCF A, Corresponding Author)</p>
                     </div>
-                    <div class="olist arabic">
-                        <ol class="arabic">
-                            <li>
-                                <p>
-                                    <strong>Jingjing Wang</strong>, Jie Li, Shoushan Li, Yangyang Kang, Min Zhang,
-                                    Luo Si, Guodong Zhou. <em>Aspect Sentiment Classification with both Word-level
-                                        and Clause-level Attention Networks</em>. Proceedings of the International Joint
-                                    Conference on Artificial Intelligence (<strong>IJCAI</strong>), 2018, 4439-4445.
-                                    (CCF A)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Jingjing Wang</strong>, Shoushan Li, Mingqi Jiang, Hanqian Wu, Guodong
-                                    Zhou. <em>Cross-media User Profiling with Joint Textual and Social User
-                                        Embedding</em>. In Proceedings of the International Conference on Computational
-                                    Linguistics (<strong>COLING</strong>), 2018, 246-251. (CCF B)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Chenlin Shen, Changlong Sun, <strong>Jingjing Wang</strong>, Yangyang Kang,
-                                    Shoushan Li, Xiaozhong Liu, Luo Si, Min Zhang, Guodong Zhou. <em>Sentiment
-                                        Classification towards Question-Answering with Hierarchical Matching
-                                        Network</em>. In Proceedings of the Conference on Empirical Methods in Natural
-                                    Language Processing (<strong>EMNLP</strong>), 2018, 3654-3663. (CCF B)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Huan Liu, <strong>Jingjing Wang</strong>, Shoushan Li, Guodong Zhou.
-                                    <em>Semi-supervised Sentiment Classification Based on Auxiliary Task Learning</em>.
-                                    In Proceeding of the International
-                                    Conference on Natural Language Processing and Chinese Computing (<strong>NLPCC</strong>), 2018. (CCF C)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Hanqian Wu, Mumu Liu, <strong>Jingjing Wang</strong>, Jue Xie, Chenlin Shen.
-                                    <em>Question-Answering Aspect Classification with Hierarchical Attention
-                                        Network</em>. In Proceeding of China Conference on Chinese Language
-                                    Processing, 2018, pp. 225-237. (EI, Corresponding Author)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Hanqian Wu, Mumu Liu, <strong>Jingjing Wang</strong>, Jue Xie, Shoushan Li.
-                                    <em>Question-Answering Aspect Classification with Multi-attention
-                                        Representation</em>. In Proceeding of China Conference on Information Retrieval, 2018, pp.78-89. (EI)
-                                </p>
-                            </li>
-                        </ol>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors"><strong>Jipeng Cen</strong>, Jiaxin Liu, Zhixu Li, <strong>Jingjing Wang</strong>.</p>
+                        <p class="pub-title">SQLFixAgent: Towards Semantic-Accurate Text-to-SQL Parsing via Consistency-Enhanced Multi-Agent Collaboration.</p>
+                        <p class="pub-venue"><span class="venue-name">AAAI 2025</span> (CCF A, Corresponding Author)</p>
                     </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Junxiao Ma, <strong>Jingjing Wang</strong>, Jiamin Luo, Min Zhang, Guodong Zhou.</p>
+                        <p class="pub-title">Skynet-V1: Towards Early Warning of Video Abnormal Events via A Spatial-temporal Causal-enhanced MoE Framework.</p>
+                        <p class="pub-venue"><span class="venue-name">ACM MM 2025</span> (CCF A, Corresponding Author)</p>
+                    </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Na Jiang, Jiamin Luo, Xuqiang Gu, <strong>Jingjing Wang</strong>.</p>
+                        <p class="pub-title">SOmniDoctor: Towards LLM-centric Lifelong Learning for New Emerging Medical VQA Tasks.</p>
+                        <p class="pub-venue"><span class="venue-name">ACM MM 2025</span> (CCF A, Corresponding Author)</p>
+                    </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Junxiao Ma, <strong>Jingjing Wang</strong>, Jiamin Luo, Peiying Yu, Guodong Zhou.</p>
+                        <p class="pub-title">Sherlock: Towards Multi-scene Video Abnormal Event Extraction and Localization.</p>
+                        <p class="pub-venue"><span class="venue-name">WWW 2025</span> (CCF A, Corresponding Author)</p>
+                    </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Jiamin Luo, <strong>Jingjing Wang</strong>, Junxiao Ma, Yujie Jin, Shoushan Li, Guodong Zhou.</p>
+                        <p class="pub-title">Omni-SILA: Towards Omni-scene Driven Visual Sentiment Identifying, Locating and Attributing in Videos.</p>
+                        <p class="pub-venue"><span class="venue-name">WWW 2025</span> (CCF A, Corresponding Author)</p>
+                    </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Luo Jiamin, <strong>Jingjing Wang</strong>, Zhou Guodong.</p>
+                        <p class="pub-title">Multi-modal Reliability-aware Affective Computing.</p>
+                        <p class="pub-venue"><span class="venue-name">Journal of Software (JOS)</span> (CCF A in Chinese Journal, EI)</p>
+                    </div>
+                    <span class="pub-badge">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Han Zhang, <strong>Jingjing Wang</strong>, Jiamin Luo, Min Zhang, Guodong Zhou.</p>
+                        <p class="pub-title">Boosting LLM's Continual Sentiment Understanding for Low-resource Languages.</p>
+                        <p class="pub-venue"><span class="venue-name">IEEE/ACM TASLP</span> (SCI, JCR Q1)</p>
+                    </div>
+                    <span class="pub-badge jcr-q1">JCR Q1</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Tan Yu, <strong>Jingjing Wang</strong>, Jiamin Luo, Jiawen Wang, Guodong Zhou.</p>
+                        <p class="pub-title">TACL: A Trusted Action-enhanced Curriculum Learning Approach to Multimodal Affective Computing.</p>
+                        <p class="pub-venue"><span class="venue-name">Neurocomputing</span> (SCI, JCR Q1)</p>
+                    </div>
+                    <span class="pub-badge jcr-q1">JCR Q1</span>
+                </li>
+            </ul>
 
-                    <div class="paragraph">
-                        <p><b>2017</b></p>
+            <div class="pub-year">2024</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Jianing Zhao, <strong>Jingjing Wang</strong>, Yujie Jin, Jiamin Luo, Guodong Zhou.</p>
+                        <p class="pub-title">Hawkeye: Discovering and Grounding Implicit Anomalous Sentiment in Recon-videos via Scene-enhanced Video Large Language Model.</p>
+                        <p class="pub-venue"><span class="venue-name">ACM MM 2024</span> (CCF A, Corresponding Author)</p>
                     </div>
-                    <div class="olist arabic">
-                        <ol class="arabic">
-                            <li>
-                                <p>
-                                    <strong>Jingjing Wang</strong>, Shoushan Li, Guodong Zhou. <em>Joint Learning on
-                                        Relevant User Attributes in Micro-blog</em>. In Proceedings of the International
-                                    Joint Conference on Artificial Intelligence (<strong>IJCAI</strong>), 2017,
-                                    4130-4136. (CCF A)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Dong Zhang, Shoushan Li, <strong>Jingjing Wang</strong>. <em>Semi-supervised
-                                        Question Classification with Jointly Learning Question and Answer
-                                        Representations</em>. Journal of Chinese Information Processing, vol. 31(1),
-                                    2017. (CCF B in Chinese Journal)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Jing Chen, Shoushan Li, <strong>Jingjing Wang</strong>, Guodong Zhou. <em>User age
-                                        prediction by combining classification and regression</em>. Journal of Sci Sin Inform,
-                                    2017, 47: 1095–1108, doi: 10.1360/N112016-00278. (CCF A in Chinese Journal)
-                                </p>
-                            </li>
-                        </ol>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Tan Yu, <strong>Jingjing Wang</strong>, Jiawen Wang, Jiamin Luo, Guodong Zhou.</p>
+                        <p class="pub-title">Towards Emotion-enriched Text-to-Motion Generation via LLM-guided Limb-level Emotion Manipulating.</p>
+                        <p class="pub-venue"><span class="venue-name">ACM MM 2024</span> (CCF A, Corresponding Author)</p>
                     </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Han Zhang, <strong>Jingjing Wang</strong>, Jiamin Luo, Guodong Zhou.</p>
+                        <p class="pub-title">Continual Attention Modeling for Successive Sentiment Analysis in Low-resource Scenarios.</p>
+                        <p class="pub-venue"><span class="venue-name">Journal of Software (JOS)</span> (CCF A in Chinese Journal, EI)</p>
+                    </div>
+                    <span class="pub-badge">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Yiding Liu, <strong>Jingjing Wang</strong>, Jiamin Luo, Tao Zeng, Guodong Zhou.</p>
+                        <p class="pub-title">ChatASU: Evoking LLM's Reflection to Truly Understand Aspect Sentiment in Dialogues.</p>
+                        <p class="pub-venue"><span class="venue-name">COLING 2024</span> (CCF B, Corresponding Author)</p>
+                    </div>
+                    <span class="pub-badge">CCF B</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Jiamin Luo, Jianing Zhao, <strong>Jingjing Wang</strong>, Guodong Zhou.</p>
+                        <p class="pub-title">How to Understand 'Support'? An Implicit-enhanced Causal Inference Approach for Weakly-supervised Phrase Grounding.</p>
+                        <p class="pub-venue"><span class="venue-name">COLING 2024</span> (CCF B, Corresponding Author)</p>
+                    </div>
+                    <span class="pub-badge">CCF B</span>
+                </li>
+            </ul>
 
-                    <div class="paragraph">
-                        <p><b>2015</b></p>
+            <div class="pub-year">2023</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Yiding Liu, <strong>Jingjing Wang</strong>, Jiamin Luo, Guodong Zhou.</p>
+                        <p class="pub-title">LLM-Grounded Conversation Aspect Sentiment Understanding via Multi-Agent Consistency Reflection.</p>
+                        <p class="pub-venue"><span class="venue-name">Journal of Software (JOS)</span> (CCF A in Chinese Journal, EI)</p>
                     </div>
-                    <div class="olist arabic">
-                        <ol class="arabic">
-                            <li>
-                                <p>
-                                    <strong>Jingjing Wang</strong>, Yunxia Xue, Shoushan Li, Guodong Zhou.
-                                    <em>Leveraging Interactive Knowledge and Unlabeled Data in Gender Classification
-                                        with Co-training</em>. In Proceedings of the International Conference on Database
-                                    Systems for Advanced Applications (<strong>DASFAA</strong>), 2015, 246-251. (CCF
-                                    B)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Shoushan Li, <strong>Jingjing Wang</strong>, Guodong Zhou, Hanxiao Shi.
-                                    <em>Interactive Gender Inference with Integer Linear Programming</em>.
-                                    In Proceedings of the International Joint Conference on Artificial Intelligence
-                                    (<strong>IJCAI</strong>), 2015, 2341-2347. (CCF A)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Shoushan Li, Lei Huang, <strong>Jingjing Wang</strong>, Guodong Zhou.
-                                    <em>Semi-Stacking for Semi-supervised Sentiment Classification</em>. In Proceedings
-                                    of the Annual Meeting of the Association for Computational Linguistics
-                                    (<strong>ACL</strong>), 2015, 27-31. (CCF A)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Lei Huang, Shoushan Li, <strong>Jingjing Wang</strong>. <em>User-Type Classification
-                                        in Micro-Blog Based on Information of Authenticated User</em>. Journal of
-                                    Frontiers of Computer Science and Technology, vol. 9(6), 2015. (CCF B in Chinese Journal)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Jingjing Wang</strong>, Shoushan Li, Lei Huang. <em>User Gender
-                                        Classification in Chinese Microblog</em>. Journal of Chinese Information
-                                    Processing, vol. 28(6), 2014. (CCF B in Chinese Journal)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Zhu zhu, <strong>Jingjing Wang</strong>, Shoushan Li, Guodong Zhou.
-                                    <em>Interactive Gender Inference in Social Media</em>. In Proceedings of
-                                    the International Conference on Database Systems for Advanced Applications
-                                    (<strong>DASFAA</strong>), 2015, 252-258. (CCF B)
-                                </p>
-                            </li>
-
-                        </ol>
+                    <span class="pub-badge">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Jianing Zhao, <strong>Jingjing Wang</strong>, Jiamin Luo, Guodong Zhou.</p>
+                        <p class="pub-title">Implicit-enhanced Causal Modeling for Phrasal Visual Grounding.</p>
+                        <p class="pub-venue"><span class="venue-name">Journal of Software (JOS)</span> (CCF A in Chinese Journal)</p>
                     </div>
+                    <span class="pub-badge">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors"><strong>Jingjing Wang</strong>, Jiamin Luo, Guodong Zhou.</p>
+                        <p class="pub-title">Fine-Grained Question-Answer Matching via Sentence-Aware Contrastive Self-supervised Transfer.</p>
+                        <p class="pub-venue"><span class="venue-name">NLPCC 2023</span> (CCF C)</p>
+                    </div>
+                    <span class="pub-badge">CCF C</span>
+                </li>
+            </ul>
 
+            <div class="pub-year">2022</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Xiaoya Gao, <strong>Jingjing Wang</strong>, Shoushan Li, Min Zhang, Guodong Zhou.</p>
+                        <p class="pub-title">Cognition-driven multimodal personality classification.</p>
+                        <p class="pub-venue"><span class="venue-name">Science China Information Sciences (SCIS)</span> (CCF A, JCR Q1)</p>
+                    </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+            </ul>
+
+            <div class="pub-year">2021</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Xiaoya Gao, <strong>Jingjing Wang</strong>, Shoushan Li, Guodong Zhou.</p>
+                        <p class="pub-title">Cognition-Driven Real-Time Personality Detection via Language-Guided Contrastive Visual Attention.</p>
+                        <p class="pub-venue"><span class="venue-name">ICME 2021</span> (CCF B, Corresponding Author)</p>
+                    </div>
+                    <span class="pub-badge">CCF B</span>
+                </li>
+            </ul>
+
+            <div class="pub-year">2020</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Xiao Chen, Changlong Sun, <strong>Jingjing Wang</strong>, Shoushan Li, Luo Si, Min Zhang, Guodong Zhou.</p>
+                        <p class="pub-title">Aspect Sentiment Classification with Document-level Sentiment Preference Modeling.</p>
+                        <p class="pub-venue"><span class="venue-name">ACL 2020</span> (CCF A, Corresponding Author)</p>
+                    </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors"><strong>Jingjing Wang</strong>, Jiancheng Wang, Changlong Sun, Shoushan Li, Xiaozhong Liu, Luo Si, Min Zhang, Guodong Zhou.</p>
+                        <p class="pub-title">Sentiment classification in customer service dialogue with topic-aware multi-task learning.</p>
+                        <p class="pub-venue"><span class="venue-name">AAAI 2020</span> (CCF A, Corresponding Author)</p>
+                    </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+            </ul>
+
+            <div class="pub-year">2019</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors"><strong>Jingjing Wang</strong>, Changlong Sun, Shoushan Li, Jiancheng Wang, Luo Si, Min Zhang, Xiaozhong Liu, Guodong Zhou.</p>
+                        <p class="pub-title">Human-Like Decision Making: Document-level Aspect Sentiment Classification via Hierarchical Reinforcement Learning.</p>
+                        <p class="pub-venue"><span class="venue-name">EMNLP 2019</span> (CCF B)</p>
+                    </div>
+                    <span class="pub-badge">CCF B</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors"><strong>Jingjing Wang</strong>, Changlong Sun, Shoushan Li, Xiaozhong Liu, Min Zhang, Luo Si, Guodong Zhou.</p>
+                        <p class="pub-title">Aspect Sentiment Classification Towards Question-Answering with Reinforced Bidirectional Attention Network.</p>
+                        <p class="pub-venue"><span class="venue-name">ACL 2019</span> (CCF A)</p>
+                    </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+            </ul>
+
+            <div class="pub-year">2018</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors"><strong>Jingjing Wang</strong>, Jie Li, Shoushan Li, Yangyang Kang, Min Zhang, Luo Si, Guodong Zhou.</p>
+                        <p class="pub-title">Aspect Sentiment Classification with both Word-level and Clause-level Attention Networks.</p>
+                        <p class="pub-venue"><span class="venue-name">IJCAI 2018</span> (CCF A)</p>
+                    </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors"><strong>Jingjing Wang</strong>, Shoushan Li, Mingqi Jiang, Hanqian Wu, Guodong Zhou.</p>
+                        <p class="pub-title">Cross-media User Profiling with Joint Textual and Social User Embedding.</p>
+                        <p class="pub-venue"><span class="venue-name">COLING 2018</span> (CCF B)</p>
+                    </div>
+                    <span class="pub-badge">CCF B</span>
+                </li>
+            </ul>
+
+            <div class="pub-year">2017</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors"><strong>Jingjing Wang</strong>, Shoushan Li, Guodong Zhou.</p>
+                        <p class="pub-title">Joint Learning on Relevant User Attributes in Micro-blog.</p>
+                        <p class="pub-venue"><span class="venue-name">IJCAI 2017</span> (CCF A)</p>
+                    </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+            </ul>
+
+            <div class="pub-year">2015</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors"><strong>Jingjing Wang</strong>, Yunxia Xue, Shoushan Li, Guodong Zhou.</p>
+                        <p class="pub-title">Leveraging Interactive Knowledge and Unlabeled Data in Gender Classification with Co-training.</p>
+                        <p class="pub-venue"><span class="venue-name">DASFAA 2015</span> (CCF B)</p>
+                    </div>
+                    <span class="pub-badge">CCF B</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Shoushan Li, <strong>Jingjing Wang</strong>, Guodong Zhou, Hanxiao Shi.</p>
+                        <p class="pub-title">Interactive Gender Inference with Integer Linear Programming.</p>
+                        <p class="pub-venue"><span class="venue-name">IJCAI 2015</span> (CCF A)</p>
+                    </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+                <li class="pub-item">
+                    <div>
+                        <p class="pub-authors">Shoushan Li, Lei Huang, <strong>Jingjing Wang</strong>, Guodong Zhou.</p>
+                        <p class="pub-title">Semi-Stacking for Semi-supervised Sentiment Classification.</p>
+                        <p class="pub-venue"><span class="venue-name">ACL 2015</span> (CCF A)</p>
+                    </div>
+                    <span class="pub-badge ccf-a">CCF A</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Awards Section -->
+        <section id="awards">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Awards & Honors</h2>
+            </div>
+            <div class="awards-list">
+                <div class="award-item">Outstanding Expert and Supervisor of Microsoft (2021)</div>
+                <div class="award-item">Outstanding PhD of Soochow University (2019)</div>
+                <div class="award-item">National Scholarship for Ph.D. (2017)</div>
+                <div class="award-item">National Scholarship for Master (2016)</div>
+                <div class="award-item">Suzhou Industrial Park Scholarship (2018, 2015)</div>
+            </div>
+        </section>
+
+        <!-- Academic Services Section -->
+        <section id="services">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Academic Services</h2>
+            </div>
+            <div class="service-grid">
+                <div class="service-block">
+                    <h4>Technical Program Committee</h4>
+                    <ul>
+                        <li>ACL: Area Chair</li>
+                        <li>EMNLP: Area Chair</li>
+                        <li>AAAI: Program Committee</li>
+                        <li>IJCAI: Program Committee</li>
+                        <li>WWW, ACM MM: Reviewer</li>
+                    </ul>
+                </div>
+                <div class="service-block">
+                    <h4>Journal Reviewer</h4>
+                    <ul>
+                        <li>IEEE/ACM TASLP</li>
+                        <li>ACM TALLIP</li>
+                        <li>Science China Information Sciences</li>
+                        <li>Journal of Software (JOS)</li>
+                        <li>Acta Automatica Sinica</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-
-    <div class="container" id="award">
-        <div class="row" id="award">
-            <div class="col-md-12">
-                <h2><b>
-                        <font size="5">Awards & Honors</font></b></h2>
+        <!-- Research Grants Section -->
+        <section id="grants">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2 class="section-title">Research Grants</h2>
+            </div>
+            <div class="service-block">
+                <h4>As Principle Investigator</h4>
                 <ul>
-
-                    <li>
-                        <p>Outstanding Expert and Supervisor of Microsoft (2021)</p>
+                    <li style="padding-left: 0; margin-bottom: 0.75rem;">
+                        <strong>Key Technologies for Multimodal Implicit Sentiment Understanding and Editing Generation</strong><br>
+                        <span style="color: var(--color-accent);">NSFC General Program</span> · 500K RMB · 2026–2029
                     </li>
-                    <li>
-                        <p>Outstanding PhD of Soochow University (2019)</p>
+                    <li style="padding-left: 0; margin-bottom: 0.75rem;">
+                        <strong>Key Technology Research on Attribute-level Sentiment Analysis for Conversational Texts</strong><br>
+                        <span style="color: var(--color-accent);">NSFC Young Scientist Fund</span> · 240K RMB · 2021–2023
                     </li>
-                    <li>
-                        <p>Suzhou Industrial Park Scholarship (2018)</p>
-                    </li>
-                    <li>
-                        <p>National Scholarship for Ph.D. (2017)</p>
-                    </li>
-                    <li>
-                        <p>Ph.D. Scholarship of Soochow University (2017)</p>
-                    </li>
-                    <li>
-                        <p>National Scholarship for Master (2016)</p>
-                    </li>
-                    <li>
-                        <p>Outstanding Graduate Student of Soochow University (2016)</p>
-                    </li>
-                    <li>
-                        <p>Suzhou Industrial Park Scholarship (2015)</p>
-                    </li>
-                    <li>
-                        <p>etc. </p>
+                    <li style="padding-left: 0; margin-bottom: 0.75rem;">
+                        <strong>Research on Chinese Single-document Automatic Summarization Based on Discourse Structure</strong><br>
+                        <span style="color: var(--color-accent);">NSFC General Program</span> · 560K RMB · 2020–2023
                     </li>
                 </ul>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <div class="container" id="academic-services">
-        <div class="row" id="academic-services">
-            <div class="col-md-12">
-                <h3><b>
-                        <font size="5">Academic Services</font></b></h3>
-                <ul>
-                    <li>
-                        <p><b>Technical Program Committee (Area Chair & PC)</b></p>
-                    </li>
-                    <li>
-                        <p>ACL: Annual Meeting of the Association for Computational Linguistics, Area Chair</p>
-                    </li>
-                    <li>
-                        <p>EMNLP: Conference on Empirical Methods in Natural Language Processing, Area Chair</p>
-                    </li>
-                    <li>
-                        <p>AAAI: Association for the Advancement of Artificial Intelligence, PC</p>
-                    </li>
-                    <li>
-                        <p>IJCAI: International Joint Conference on Artificial Intelligence, PC</p>
-                    </li>
-                    <li>
-                        <p>etc.</p>
-                    </li>
+    <footer>
+        <p>© 2026 Jingjing Wang · Soochow University</p>
+    </footer>
 
-                    <li>
-                        <p><b>Journal Reviewer</b></p>
-                    </li>
-                    <li>
-                        <p>TASLP: IEEE/ACM Transactions on Audio, Speech, and Language Processing</p>
-                    </li>
-                    <li>
-                        <p>TALLIP: ACM Transactions on Asian and Low-Resource Language Information Processing</p>
-                    </li>
-                    <li>
-                        <p>SCIS: Science China Information Sciences</p>
-                    </li>
-                    <li>
-                        <p>Science China</p>
-                    </li>
-                    <li>
-                        <p>Acta Automatica Sinica</p>
-                    </li>
-                    <li>
-                        <p>Journal of Chinese Information Processing</p>
-                    </li>
-                    <li>
-                        <p>etc.</p>
-                    </li>
+    <!-- Scroll to top button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
 
-                    <li>
-                        <p><b>Academic Presentations and Exchanges</b></p>
-                    </li>
-                    <li>
-                        <p>2016-2021: Academic reports and exchanges at top conferences including ACL, AAAI, IJCAI</p>
-                    </li>
-                    <li>
-                        <p>2019: Academic report and exchange at Zhejiang Tailong Commercial Bank, Suzhou Industrial
-                            Park Headquarters</p>
-                    </li>
-                    <li>
-                        <p>2019: Invited talk at Ecovacs, Suzhou</p>
-                    </li>
-                    <li>
-                        <p>2022: Academic report and exchange at Alibaba Ant Financial</p>
-                    </li>
-                    <li>
-                        <p>2023: Academic report and exchange at the establishment of NLPAI-SCHOOL, Microsoft Asia
-                            Engineering Institute, Suzhou</p>
-                    </li>
-                    <li>
-                        <p>etc.</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="container" id="research-grants">
-        <div class="row" id="research-grants">
-            <div class="col-md-12">
-                <h2><b>
-                        <font size="5">Research Grants</font></b></h2>
-                <ul>
-                    <div class="sectionbody">
-                        <div class="paragraph">
-                            <p>As Principle Investigator</p>
-                        </div>
-                        <div class="olist arabic">
-                            <ol class="arabic">
-                           <li>
-                                    <p>
-	                     Key Technologies for Multimodal Implicit Sentiment Understanding and Editing Generation 
-                                        in Harmful Short-Video Content Governance (No. 62576234: 500K RMB: 2026.01–2029.12)<br>
-                           Supported by the National Natural Science Foundation of China (NSFC General Program)
-
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        Key Technology Research on Attribute-level Sentiment Analysis for Conversational
-                                        Texts (No. 62006166: 240K RMB: 2021.01–2023.12)<br>
-                                        Supported by the National Natural Science Foundation of China (NSFC Young
-                                        Scientist
-                                        Fund Project)
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        Research on Chinese Single-document Automatic Summarization Based on Discourse
-                                        Structure Analysis (No. 61976146: 560K RMB: 2020.01–2023.12)<br>
-                                        Supported by the National Natural Science Foundation of China (NSFC General
-                                        Program)
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        Resource Construction and Key Technology Research on Sentiment Information
-                                        Extraction from Question-answer Texts (No. 2019M661930: 80K RMB:
-                                        2020.01–2022.12)<br>
-                                        Supported by China Postdoctoral Science Foundation (CPSF)
-                                    </p>
-                                </li>
-                            </ol>
-                        </div>
-
-                        <div class="paragraph">
-                            <p><b>As Co-investigator</b></p>
-                        </div>
-                        <div class="olist arabic">
-                            <ol class="arabic">
-                                <li>
-                                    <p>
-                                        Scene-based Knowledge Graph for Language Understanding and Generation
-                                        (Sub-project
-                                        No. 2020AAA0108604: 6,650K RMB: 2020.11–2023.10)<br>
-                                        Supported by the National Key Research and Development Program
-                                    </p>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container" id="contact">
-        <!-- Example row of columns -->
-
-        <hr>
-
-        <footer>
-            <!-- <p>&copy; Jingjing Wang 2023</p> -->
-        </footer>
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="./dist/js/bootstrap.min.js"></script>
-    <script src="./dist/js/particles.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            particlesJS('particles', {
-                "particles": {
-                    "number": {
-                        "value": 80,
-                        "density": {
-                            "enable": true,
-                            "value_area": 800
-                        }
-                    },
-                    "color": {
-                        "value": "#cccccc"
-                    },
-                    "shape": {
-                        "type": "circle",
-                        "stroke": {
-                            "width": 0,
-                            "color": "#000000"
-                        }
-                    },
-                    "opacity": {
-                        "value": 0.5,
-                        "random": false
-                    },
-                    "size": {
-                        "value": 3,
-                        "random": true
-                    },
-                    "line_linked": {
-                        "enable": true,
-                        "distance": 150,
-                        "color": "#cccccc",
-                        "opacity": 0.4,
-                        "width": 1
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": 2,
-                        "direction": "none",
-                        "random": false,
-                        "straight": false,
-                        "out_mode": "out",
-                        "bounce": false
-                    }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": true,
-                            "mode": "grab"
-                        },
-                        "onclick": {
-                            "enable": true,
-                            "mode": "push"
-                        },
-                        "resize": true
-                    },
-                    "modes": {
-                        "grab": {
-                            "distance": 140,
-                            "line_linked": {
-                                "opacity": 1
-                            }
-                        },
-                        "push": {
-                            "particles_nb": 4
-                        }
-                    }
-                },
-                "retina_detect": true
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
+
+        // Active navigation state
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll to top button visibility
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.research-card, .news-item, .pub-item, .award-item').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Add animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .animate-in {
+                animation: fadeInUp 0.5s ease forwards;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 
